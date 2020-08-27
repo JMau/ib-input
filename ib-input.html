@@ -1,0 +1,67 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="ib-input">
+  <template>
+    <style>
+      :host {
+        display: inline;
+        @apply --ib-input;
+      }
+      .input-container {
+        padding-bottom: 0.5rem;
+        @apply --ib-input-container;
+      }
+      input {
+        background: transparent;
+        color: var(--ib-input-text-color, white);
+        border: none;
+        border-bottom: 2px solid rgb(221, 221, 221);
+        outline: none;
+        width: 100%;
+        line-height: 2rem;
+        font-size: 1rem;
+        @apply --ib-input-input;
+      }
+      ::-webkit-input-placeholder { color: var(--ib-input-placeholder-color, white);} 
+
+      :-moz-placeholder { /* Firefox 18- */ color: var(--ib-input-placeholder-color, white); } 
+
+      ::-moz-placeholder { /* Firefox 19+ */ color: var(--ib-input-placeholder-color, white); } 
+
+      :-ms-input-placeholder { color: var(--ib-input-placeholder-color, white); }
+    </style>
+
+    <div class="input-container">
+      <input type="text" placeholder="[[placeHolder]]" value="{{value::input}}">
+    </div>
+  </template>
+
+  <script>
+    /**
+     * `ib-input`
+     * Componente ib-input
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class IbInput extends Polymer.Element {
+      static get is() { return 'ib-input'; }
+      static get properties() {
+        return {
+          value: {
+            type: String,
+            value: '',
+            notify: true
+          },
+          placeHolder: {
+            type: String,
+            value: ''
+          }
+        };
+      }
+    }
+
+    window.customElements.define(IbInput.is, IbInput);
+  </script>
+</dom-module>
